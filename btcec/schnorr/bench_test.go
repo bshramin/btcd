@@ -109,6 +109,12 @@ func BenchmarkSigVerify(b *testing.B) {
 	testOk = ok
 }
 
+func BenchmarkDoubleHash(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_ = sha256.Sum256([]byte("benchmark"))
+	}
+}
+
 // Used to ensure the compiler doesn't optimize away the benchmark.
 var (
 	testSig *Signature
